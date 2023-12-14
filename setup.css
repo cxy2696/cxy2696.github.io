@@ -9,7 +9,7 @@ body {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 1em 0;
+            padding: 1em 1;
         }
         .container {
             width: 50%;
@@ -18,7 +18,7 @@ body {
             overflow: hidden;
         }
         .section {
-            margin: 2em 0;
+            margin: 2em 2;
         }
         h1 {
             color: #f4f4f4;
