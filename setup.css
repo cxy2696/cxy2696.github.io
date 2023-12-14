@@ -20,7 +20,7 @@ body {
         .section {
             margin: 2em 0;
         }
-        h1 {
+        h1, h3 {
             color: #f4f4f4;
         }
         h2 {
