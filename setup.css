@@ -36,7 +36,7 @@ body {
             text-decoration: none;
         }
         a:visited {
-            color: lightred;
+            color: green;
             background-color: transparent;
             text-decoration: none;
         }
