@@ -1,7 +1,7 @@
 body {
             font-family: Arial, sans-serif;
             color: #333;
-            background-color: #f4f4f4;
+            background-color: #CCFFFF;
             margin: 0;
             padding: 0;
         }
@@ -13,7 +13,6 @@ body {
         }
         .container {
             width: 50%;
-            background-color: CCFFFF;
             margin: 1em auto;
             padding: 35px;
             overflow: hidden;
