@@ -1,7 +1,7 @@
 body {
             font-family: Arial, sans-serif;
             color: #333;
-            background-color: #CCFFFF;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
@@ -12,7 +12,6 @@ body {
             padding: 1em 0;
         }
         .container {
-            background-color: #CCFFFF;
             width: 50%;
             margin: 1em auto;
             padding: 35px;
@@ -36,7 +35,7 @@ body {
             text-decoration: none;
         }
         a:visited {
-            color: green;
+            color: #FA2A55;
             background-color: transparent;
             text-decoration: none;
         }
