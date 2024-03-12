@@ -30,12 +30,12 @@ body {
             line-height: 1.5;
         }
         a:link {
-            color: green;
+            color: red;
             background-color: transparent;
             text-decoration: none;
         }
         a:visited {
-            color: #FA2A55;
+            color: green;
             background-color: transparent;
             text-decoration: none;
         }
