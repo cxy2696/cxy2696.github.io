@@ -56,12 +56,12 @@ body {
                 margin: 1em auto;
             }
             .header h1, .footer p {
-                font-size: 16px;
+                font-size: 18px;
             }
             .section h2 {
-                font-size: 14px;
+                font-size: 16px;
             }
             .section p {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
