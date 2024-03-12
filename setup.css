@@ -12,6 +12,7 @@ body {
             padding: 1em 0;
         }
         .container {
+            background-color: #CCFFFF;
             width: 50%;
             margin: 1em auto;
             padding: 35px;
