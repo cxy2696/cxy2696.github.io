@@ -54,7 +54,7 @@ body {
             text-decoration: underline;
         }
         /* Responsive Design */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 1000px) {
             .container {
                 width: 95%;
                 margin: 1em auto;
