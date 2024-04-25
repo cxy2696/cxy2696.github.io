@@ -59,8 +59,11 @@ body {
                 width: 95%;
                 margin: 1em auto;
             }
-            .header h1, .footer p {
+            .header h1 {
                 font-size: 18px;
+            }
+            .footer p {
+                font-size: 12px;
             }
             .section h2 {
                 font-size: 16px;
