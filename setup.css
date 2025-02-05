@@ -9,7 +9,6 @@ body {
             background-color: #333;
             color: #f9feff;
             text-align: center;
-            padding: 1em 0;
         }
         .container {
             width: 50%;
@@ -58,8 +57,6 @@ body {
             .container {
                 width: 100%;
                 margin: 1em auto;
-                padding: 35px;
-                overflow: hidden;
             }
             .header h1 {
                 font-size: 18px;
