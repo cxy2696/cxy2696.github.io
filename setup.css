@@ -1,13 +1,13 @@
 /* Reset default styles */
 * {
-    margin: 0;
-    padding: 0;
+    margin: 1em;
+    padding: 1em;
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    line-height: 1;
     color: #333;
     background-color: #f5f5f5;
 }
@@ -16,7 +16,7 @@ body {
 .header {
     background-color: #34495e;
     color: #fff;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -27,7 +27,7 @@ body {
 }
 
 .header p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0.3rem 0;
 }
 
@@ -37,7 +37,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.header a:hover {
+.header a: hover {
     color: #7fb3d5;
 }
 
