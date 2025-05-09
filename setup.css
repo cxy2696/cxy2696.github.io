@@ -19,11 +19,7 @@ body {
     padding: 3em 3em;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed; /* Fix header at the top */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure header stays above other content */
+    position: static;
 }
 
 .header h1 {
