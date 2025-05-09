@@ -42,36 +42,29 @@
     </div>
 
     <div id="content"></div>
+
     <script>
         const contentDiv = document.getElementById('content');
         const navLinks = document.querySelectorAll('nav a');
 
         // Map of page URLs to content files
         const pages = {
-            '/': '/'
+            '/': '/',
             '/Projects': '/Projects'
-        };
-
-        // Map of page URLs to titles
-        const titles = {
-            '/': 'cxy',
-            '/Projects': 'cxy | Projects'
         };
 
         // Function to load content dynamically
         function loadContent(pageUrl) {
             const contentFile = pages[pageUrl] || '/'; // Default to home if page not found
             fetch(contentFile)
-                .then(response => {
-                    if (!response.ok) throw new Error('Content not found');
-                    return response.text();
-                })
+                .then(response => response.text())
                 .then(html => {
                     contentDiv.innerHTML = html;
-                    // Update document title
-                    document.title = titles[pageUrl] || 'cxy';
-                    // Scroll to top after content load
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // Update document title based on page
+                    document.title = {
+                        '/': 'cxy',
+                        '/Projects': 'cxy | Projects'
+                    }[pageUrl] || 'cxy';
                 })
                 .catch(error => {
                     console.error('Error loading content:', error);
@@ -100,5 +93,4 @@
         });
     </script>
 </body>
-    
 </html>
