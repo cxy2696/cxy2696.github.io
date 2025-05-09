@@ -79,7 +79,7 @@ iframe {
     width: 300px;
     height: auto;
     border-radius: 50%;
-    float: inline-start;
+    float: left;
     margin-right: 2rem;
     margin-bottom: 1.5rem;
 }
