@@ -52,7 +52,7 @@ body {
 .section {
     background-color: #fff;
     padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
@@ -69,7 +69,7 @@ body {
 /* Iframe Styles */
 iframe {
     display: block;
-    margin: 2rem auto;
+    margin: 1rem auto;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -80,8 +80,8 @@ iframe {
     height: auto;
     border-radius: 50%;
     float: left;
-    margin-right: 1.5rem;
-    margin-bottom: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1.5rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
