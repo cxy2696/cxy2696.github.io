@@ -36,12 +36,12 @@ body {
 }
 
 .header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 0.3rem;
 }
 
 .header p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0.3rem;
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 .section h2 {
-    font-size: 1.8rem;
+    font-size: 1rem;
     color: #2c3e50;
     margin-bottom: 1rem;
     border-bottom: 2px solid #3498db;
