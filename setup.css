@@ -74,6 +74,17 @@ iframe {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Profile Image Styles */
+.profile-img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header h1 {
