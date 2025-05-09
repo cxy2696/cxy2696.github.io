@@ -25,7 +25,7 @@
         <p><a href="https://www.linkedin.com/in/Xinyi-cui-3979511b5/">LinkedIn</a> | <a href="https://github.com/cxy2696">GitHub</a></p>
         <p>Email: <a href="mailto:xinyicui0108@outlook.com">Personal Email</a></p>
         <br/>
-        <nav><h2> <a href="/Home">Home</a> | <a href="/Projects">Projects</a> | </h2></nav>
+        <nav><h2> <a href="/">Home</a> | <a href="/Projects">Projects</a> | </h2></nav>
     </div>
 
     <div id="content", class="container">
@@ -48,19 +48,19 @@
 
         // Map of page URLs to content files
         const pages = {
-            '/Home': '/Home'
+            '/': '/'
             '/Projects': '/Projects'
         };
 
         // Map of page URLs to titles
         const titles = {
-            '/Home': 'cxy| Home',
+            '/': 'cxy',
             '/Projects': 'cxy | Projects'
         };
 
         // Function to load content dynamically
         function loadContent(pageUrl) {
-            const contentFile = pages[pageUrl] || 'home-content.html'; // Default to home if page not found
+            const contentFile = pages[pageUrl] || '/'; // Default to home if page not found
             fetch(contentFile)
                 .then(response => {
                     if (!response.ok) throw new Error('Content not found');
