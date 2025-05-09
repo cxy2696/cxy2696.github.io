@@ -16,7 +16,7 @@ body {
 .header {
     background-color: #064273;
     color: #fff;
-    padding: 5em 5em;
+    padding: 3em 3em;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -76,7 +76,7 @@ iframe {
 
 /* Profile Image Styles */
 .profile-img {
-    width: 280px;
+    width: 300px;
     height: auto;
     border-radius: 50%;
     float: left;
