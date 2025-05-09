@@ -38,17 +38,20 @@ body {
 .header h1 {
     font-size: 2rem;
     margin-bottom: 0.3rem;
+    position: relative;
 }
 
 .header p {
     font-size: 1rem;
     margin: 0.3rem;
+    position: relative;
 }
 
 .header a {
     color: #EDE1CF;
     text-decoration: none;
     transition: color 0.5s ease;
+    position: relative;
 }
 
 .header a: hover {
