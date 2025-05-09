@@ -60,6 +60,7 @@ body {
 
 /* Section Styles */
 .section {
+    display: block;
     background-color: #fff;
     padding: 1.5rem;
     margin-bottom: 1rem;
