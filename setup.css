@@ -23,17 +23,12 @@ body {
 
 /* Profile Image Styles */
 .profile-img {
-    width: 200px;
+    width: 300px;
     height: auto;
     border-radius: 50%;
     float: inline-start;
     margin-right: 1.5rem;
     margin-bottom: 1rem;
-}
-
-.header h1, .header p, .header h2 {
-    text-align: left;
-    margin-left: 230px;
 }
 
 .header h1 {
