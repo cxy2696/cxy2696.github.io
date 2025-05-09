@@ -28,13 +28,13 @@ body {
 
 .header p {
     font-size: 1rem;
-    margin: 0.3rem 0;
+    margin: 0.5rem 0;
 }
 
 .header a {
     color: #EDE1CF;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 }
 
 .header a: hover {
