@@ -9,12 +9,12 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1;
     color: #333;
-    background-color: #f5f5f5;
+    background-color: #064273;
 }
 
 /* Header Styles */
 .header {
-    background-color: #5391fc;
+    background-color: #064273;
     color: #fff;
     padding: 1em 1em;
     text-align: center;
@@ -32,7 +32,7 @@ body {
 }
 
 .header a {
-    color: #3498db;
+    color: #EDE1CF;
     text-decoration: none;
     transition: color 0.3s ease;
 }
