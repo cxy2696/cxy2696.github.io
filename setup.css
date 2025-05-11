@@ -26,8 +26,9 @@ body {
     width: 200px;
     height: auto;
     border-radius: 50%;
-    float: inline-start;
-    margin-left: 15rem;
+    float: inline-end;
+    display: block;
+    object-fit: cover;
 }
 
 /* Content Container */
@@ -92,6 +93,14 @@ iframe {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+video, audio {
+    width: 100%;
+    max-width: 100;
+    border-radius: 8px;
+    margin: 1rem auto;
+    display: block;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header h1 {
@@ -114,7 +123,7 @@ iframe {
         width: 150px;
     }
 
-    iframe {
+    iframe, video, audio {
         height: 400px;
     }
 }
@@ -135,7 +144,7 @@ iframe {
         display: block;
     }
 
-    iframe {
+    iframe, video, audio {
         height: 300px;
     }
 }
