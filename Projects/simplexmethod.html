@@ -153,7 +153,7 @@
             }
             .language-switcher {
                 top: 0.5rem;
-                right: 0.5rem;
+                left: 0.5rem;
             }
         }
         @media (max-width: 480px) {
@@ -216,22 +216,9 @@
             <h2 data-i18n="results">Results</h2>
             <div id="output" data-i18n="outputPlaceholder">Enter problem details and click "Solve" to see results.</div>
         </section>
-        <section class="form-section">
-            <h2 data-i18n="accessWeChat">Access in WeChat</h2>
-            <p data-i18n="weChatInstructions">If the link doesn't open in WeChat, scan this QR code, copy the URL, or open it in Chrome/Safari.</p>
-            <div id="qrcode"></div>
-            <p>
-                <input type="text" id="copy-url" value="https://cxy-simplex.com" readonly style="width: 70%; padding: 0.5rem; margin-right: 0.5rem;">
-                <button onclick="copyUrl()" data-i18n="copyUrl">Copy URL</button>
-            </p>
-            <p><a href="https://cxy-simplex.com" id="fallback-link" rel="noopener noreferrer" aria-label="Open in external browser" data-i18n="openInBrowser">Open in Browser</a></p>
-        </section>
-        <div class="weixin-tip" id="weixin-tip" style="display: none;">
-            <p><img src="/images/open-in-browser.png" alt="Open in browser icon" style="max-width: 200px;"></p>
-            <p data-i18n="weChatPrompt">Please open this link in an external browser (Chrome/Safari) to access the Simplex Solver.</p>
         </div>
     </div>
-    <script src="/js/qrcode.min.js"></script>
+
     <script>
         const translations = {
             en: {
@@ -248,12 +235,7 @@
                 rhsValues: "RHS Values (b, comma-separated):",
                 solve: "Solve",
                 results: "Results",
-                outputPlaceholder: "Enter problem details and click 'Solve' to see results.",
-                accessWeChat: "Access in WeChat",
-                weChatInstructions: "If the link doesn't open in WeChat, scan this QR code, copy the URL, or open it in Chrome/Safari.",
-                copyUrl: "Copy URL",
-                openInBrowser: "Open in Browser",
-                weChatPrompt: "Please open this link in an external browser (Chrome/Safari) to access the Simplex Solver."
+                outputPlaceholder: "Enter problem details and click 'Solve' to see results."
             },
             zh: {
                 title: "单纯形法求解器",
@@ -269,12 +251,7 @@
                 rhsValues: "右端值 (b，逗号分隔)：",
                 solve: "求解",
                 results: "结果",
-                outputPlaceholder: "请输入问题详情并点击“求解”查看结果。",
-                accessWeChat: "在微信中访问",
-                weChatInstructions: "如果链接在微信中无法打开，请扫描此二维码、复制网址或在Chrome/Safari中打开。",
-                copyUrl: "复制网址",
-                openInBrowser: "在浏览器中打开",
-                weChatPrompt: "请在外部浏览器（Chrome/Safari）中打开此链接以访问单纯形法求解器。"
+                outputPlaceholder: "请输入问题详情并点击“求解”查看结果。"
             },
             ja: {
                 title: "シンプレックス法ソルバー",
@@ -290,12 +267,7 @@
                 rhsValues: "右辺値 (b、カンマ区切り)：",
                 solve: "解決",
                 results: "結果",
-                outputPlaceholder: "問題の詳細を入力し、「解決」をクリックして結果を確認してください。",
-                accessWeChat: "WeChatでのアクセス",
-                weChatInstructions: "リンクがWeChatで開かない場合は、このQRコードをスキャンするか、URLをコピーしてChrome/Safariで開いてください。",
-                copyUrl: "URLをコピー",
-                openInBrowser: "ブラウザで開く",
-                weChatPrompt: "シンプレックス法ソルバーにアクセスするには、外部ブラウザ（Chrome/Safari）でこのリンクを開いてください。"
+                outputPlaceholder: "問題の詳細を入力し、「解決」をクリックして結果を確認してください。"
             }
         };
 
@@ -312,12 +284,6 @@
                 }
             });
             updateForm(); // Update placeholders
-        }
-
-        new QRCode(document.getElementById('qrcode'), {
-            text: 'https://cxy-simplex.com',
-            width: 128,
-            height: 128
         });
 
         function copyUrl() {
