@@ -489,7 +489,7 @@
                     outputDiv.textContent = result.join('\n');
                 });
             } catch (error) {
-                outputDiv.textContent = `${translations[lang].error || 'Error'}: ${error.message}\n${translations[lang].checkInputs || 'Please check your inputs or open in Chrome/Safari: https://cxy-simplex.com'}`;
+                outputDiv.textContent = `${translations[lang].error || 'Error'}: ${error.message}\n${translations[lang].checkInputs || 'Please check your inputs or open in Chrome/Safari: https://cxy2696.github.io'}`;
             }
         });
 
@@ -497,7 +497,7 @@
             const outputDiv = document.getElementById('output');
             const lang = document.getElementById('language').value;
             if (e.message.includes('pyscript')) {
-                outputDiv.textContent = translations[lang].pyscriptError || 'Failed to load PyScript. Please open this link in Chrome/Safari: https://cxy-simplex.com';
+                outputDiv.textContent = translations[lang].pyscriptError || 'Failed to load PyScript. Please open this link in Chrome/Safari: https://cxy2696.github.io';
             }
         });
 
