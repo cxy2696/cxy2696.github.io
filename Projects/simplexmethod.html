@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simplex Method Solver</title>
-    <title>PyScript 2025.3.1</title>
-        <link rel="stylesheet" href="https://pyscript.net/releases/2025.3.1/core.css" />
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.3.1/core.css" />
         <script type="module" src="https://pyscript.net/releases/2025.3.1/core.js"></script>
     <style>
         * {
@@ -153,7 +152,7 @@
             }
             .language-switcher {
                 top: 0.5rem;
-                left: 0.5rem;
+                right: 0.5rem;
             }
         }
         @media (max-width: 480px) {
@@ -178,7 +177,9 @@
         <h1 data-i18n="title">Simplex Method Solver</h1>
         <p data-i18n="subtitle">Solve linear programming problems interactively</p>
         <p>
-            <a href="https://en.wikipedia.org/wiki/Simplex_algorithm" rel="noopener noreferrer" title="Learn about Simplex Method" aria-label="Learn about Simplex Method" data-i18n="learnMore">Learn More</a>
+            <a href="https://en.wikipedia.org/wiki/Simplex_algorithm" rel="noopener noreferrer" title="Learn about Simplex Method" aria-label="Learn about Simplex Method" data-i18n="learnMore">Learn More</a> |
+            <a href="https://www.linkedin.com/in/xinyi-cui" rel="noopener noreferrer" title="Xinyi Cui's LinkedIn" aria-label="Xinyi Cui's LinkedIn">LinkedIn</a> |
+            <a href="https://github.com/cxy2696" rel="noopener noreferrer" title="Xinyi Cui's GitHub" aria-label="Xinyi Cui's GitHub">GitHub</a>
         </p>
     </header>
     <div class="container">
@@ -216,7 +217,6 @@
             <h2 data-i18n="results">Results</h2>
             <div id="output" data-i18n="outputPlaceholder">Enter problem details and click "Solve" to see results.</div>
         </section>
-        </div>
     </div>
 
     <script>
@@ -226,16 +226,28 @@
                 subtitle: "Solve linear programming problems interactively",
                 learnMore: "Learn More",
                 inputProblem: "Input Problem",
-                problemType: "Problem Type",
+                problemType: "Problem Type:",
                 maximization: "Maximization",
                 minimization: "Minimization",
                 numVariables: "Number of Variables (n):",
                 numConstraints: "Number of Constraints (m):",
                 objectiveCoefficients: "Objective Function Coefficients (comma-separated):",
+                constraint: "Constraint",
+                coefficients: "Coefficients",
                 rhsValues: "RHS Values (b, comma-separated):",
                 solve: "Solve",
                 results: "Results",
-                outputPlaceholder: "Enter problem details and click 'Solve' to see results."
+                outputPlaceholder: "Enter problem details and click 'Solve' to see results.",
+                accessWeChat: "Access in WeChat",
+                weChatInstructions: "If the link doesn't open in WeChat, scan this QR code, copy the URL, or open it in Chrome/Safari.",
+                copyUrl: "Copy URL",
+                openInBrowser: "Open in Browser",
+                weChatPrompt: "Please open this link in an external browser (Chrome/Safari) to access the Simplex Solver.",
+                computing: "Computing...",
+                invalidInput: "Invalid input: Check that the number of coefficients matches the specified dimensions.",
+                error: "Error",
+                checkInputs: "Please check your inputs or open in Chrome/Safari: https://cxy-simplex.com",
+                pyscriptError: "Failed to load PyScript. Please open this link in Chrome/Safari: https://cxy-simplex.com"
             },
             zh: {
                 title: "单纯形法求解器",
@@ -248,10 +260,22 @@
                 numVariables: "变量数量 (n)：",
                 numConstraints: "约束数量 (m)：",
                 objectiveCoefficients: "目标函数系数（逗号分隔）：",
+                constraint: "约束",
+                coefficients: "系数",
                 rhsValues: "右端值 (b，逗号分隔)：",
                 solve: "求解",
                 results: "结果",
-                outputPlaceholder: "请输入问题详情并点击“求解”查看结果。"
+                outputPlaceholder: "请输入问题详情并点击“求解”查看结果。",
+                accessWeChat: "在微信中访问",
+                weChatInstructions: "如果链接在微信中无法打开，请扫描此二维码、复制网址或在Chrome/Safari中打开。",
+                copyUrl: "复制网址",
+                openInBrowser: "在浏览器中打开",
+                weChatPrompt: "请在外部浏览器（Chrome/Safari）中打开此链接以访问单纯形法求解器。",
+                computing: "计算中...",
+                invalidInput: "无效输入：请检查系数数量是否与指定维度匹配。",
+                error: "错误",
+                checkInputs: "请检查您的输入或在Chrome/Safari中打开：https://cxy-simplex.com",
+                pyscriptError: "无法加载PyScript。请在Chrome/Safari中打开此链接：https://cxy-simplex.com"
             },
             ja: {
                 title: "シンプレックス法ソルバー",
@@ -264,10 +288,22 @@
                 numVariables: "変数の数 (n)：",
                 numConstraints: "制約の数 (m)：",
                 objectiveCoefficients: "目的関数の係数（カンマ区切り）：",
+                constraint: "制約",
+                coefficients: "係数",
                 rhsValues: "右辺値 (b、カンマ区切り)：",
                 solve: "解決",
                 results: "結果",
-                outputPlaceholder: "問題の詳細を入力し、「解決」をクリックして結果を確認してください。"
+                outputPlaceholder: "問題の詳細を入力し、「解決」をクリックして結果を確認してください。",
+                accessWeChat: "WeChatでのアクセス",
+                weChatInstructions: "リンクがWeChatで開かない場合は、このQRコードをスキャンするか、URLをコピーしてChrome/Safariで開いてください。",
+                copyUrl: "URLをコピー",
+                openInBrowser: "ブラウザで開く",
+                weChatPrompt: "シンプレックス法ソルバーにアクセスするには、外部ブラウザ（Chrome/Safari）でこのリンクを開いてください。",
+                computing: "計算中...",
+                invalidInput: "無効な入力：係数の数が指定された次元と一致しているか確認してください。",
+                error: "エラー",
+                checkInputs: "入力を確認するか、Chrome/Safariで開いてください：https://cxy-simplex.com",
+                pyscriptError: "PyScriptの読み込みに失敗しました。Chrome/Safariでこのリンクを開いてください：https://cxy-simplex.com"
             }
         };
 
@@ -276,14 +312,20 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 element.textContent = translations[lang][key];
-                if (element.tagName === 'SELECT' || element.tagName === 'INPUT') {
+                if (element.tagName === 'SELECT') {
                     element.querySelectorAll('option').forEach((option, index) => {
                         const optKey = ['maximization', 'minimization'][index];
                         if (optKey) option.textContent = translations[lang][optKey];
                     });
                 }
             });
-            updateForm(); // Update placeholders
+            updateForm();
+        }
+
+        new QRCode(document.getElementById('qrcode'), {
+            text: 'https://cxy-simplex.com',
+            width: 128,
+            height: 128
         });
 
         function copyUrl() {
@@ -324,7 +366,7 @@
                 div.className = 'form-group';
                 div.innerHTML = `
                     <label for="constraint-${i}">${translations[lang].constraint} ${i + 1} ${translations[lang].coefficients} (comma-separated):</label>
-                    <input type="text" id="constraint-${i}" name="constraint-${i}" placeholder="${translations[lang].constraintCoefficients.replace('：', '')}, e.g., 1,2,3" aria-label="Constraint ${i + 1} coefficients">
+                    <input type="text" id="constraint-${i}" name="constraint-${i}" placeholder="${translations[lang].constraintCoefficients || 'Coefficients (comma-separated)'}, e.g., 1,2,3" aria-label="Constraint ${i + 1} coefficients">
                 `;
                 constraintGroup.appendChild(div);
             }
@@ -344,7 +386,7 @@
             e.preventDefault();
             const outputDiv = document.getElementById('output');
             const lang = document.getElementById('language').value;
-            outputDiv.textContent = translations[lang].computing || 'Computing...';
+            outputDiv.textContent = translations[lang].computing;
 
             try {
                 const problemType = document.getElementById('problem-type').value;
@@ -359,11 +401,11 @@
                 const b = document.getElementById('rhs-values').value.split(',').map(Number);
 
                 if (c.length !== n || A.length !== m || b.length !== m || A.some(row => row.length !== n)) {
-                    outputDiv.textContent = translations[lang].invalidInput || 'Invalid input: Check that the number of coefficients matches the specified dimensions.';
+                    outputDiv.textContent = translations[lang].invalidInput;
                     return;
                 }
 
-                await pyscript.run(`
+                const result = await pyscript.run(`
                     import numpy as np
                     import json
 
@@ -451,11 +493,10 @@
                     if result:
                         output.append(f"Final Result: {json.dumps(result)}")
                     return output
-                `).then(result => {
-                    outputDiv.textContent = result.join('\n');
-                });
+                `);
+                outputDiv.textContent = result.join('\n');
             } catch (error) {
-                outputDiv.textContent = `${translations[lang].error || 'Error'}: ${error.message}\n${translations[lang].checkInputs || 'Please check your inputs or open in Chrome/Safari: https://cxy2696.github.io'}`;
+                outputDiv.textContent = `${translations[lang].error}: ${error.message}\n${translations[lang].checkInputs}`;
             }
         });
 
@@ -463,11 +504,10 @@
             const outputDiv = document.getElementById('output');
             const lang = document.getElementById('language').value;
             if (e.message.includes('pyscript')) {
-                outputDiv.textContent = translations[lang].pyscriptError || 'Failed to load PyScript. Please open this link in Chrome/Safari: https://cxy2696.github.io';
+                outputDiv.textContent = translations[lang].pyscriptError;
             }
         });
 
-        // Initialize language
         switchLanguage();
     </script>
 </body>
