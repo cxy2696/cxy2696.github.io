@@ -81,39 +81,5 @@
             loadContent(pageUrl);
         });
     </script>
-    
-    <section class="form-section">
-    <h2>Access in WeChat</h2>
-    <p>If the link doesn't open in WeChat, scan this QR code or copy the URL and open it in Chrome/Safari.</p>
-    <div id="qrcode"></div>
-    <p><a href="https://yourdomain.com" id="fallback-link" rel="noopener noreferrer" aria-label="Open in external browser">Open in Browser</a></p>
-</section>
-<div class="weixin-tip" id="weixin-tip" style="display: none;">
-    <p><img src="https://yourdomain.com/images/open-in-browser.png" alt="Open in browser icon" style="max-width: 200px;"></p>
-    <p>Please open this link in an external browser (Chrome/Safari) to access the Simplex Solver.</p>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script>
-    // Generate QR code
-    new QRCode(document.getElementById('qrcode'), {
-        text: 'https://yourdomain.com',
-        width: 128,
-        height: 128
-    });
-
-    // Detect WeChat browser and show mask
-    const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
-    if (isWeChat) {
-        document.getElementById('weixin-tip').style.display = 'block';
-    }
-
-    // Fallback for PyScript loading failure
-    window.addEventListener('error', (e) => {
-        const outputDiv = document.getElementById('output');
-        if (e.message.includes('pyscript')) {
-            outputDiv.textContent = 'Failed to load PyScript. Please open this link in Chrome/Safari: https://yourdomain.com';
-        }
-    });
-</script>
 </body>
 </html>
