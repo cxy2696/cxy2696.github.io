@@ -7,4 +7,5 @@ Key findings indicate that otaku culture significantly impacts consumer behavior
 
 Providing insights for game developers and marketers navigating the otaku marketplace.
 
-[Simplex Method](https://cxy2696.github.io/Projects/simplexmethod.html)
+# [Simplex Method](https://cxy2696.github.io/Projects/simplexmethod.html)
+
