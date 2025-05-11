@@ -55,6 +55,30 @@
             outline: 2px solid #7fb3d5;
         }
 
+        .translate-buttons {
+            margin-top: 1rem;
+        }
+
+        .translate-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin: 0 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .translate-button:hover {
+            background-color: #2980b9;
+        }
+
+        .translate-button:focus {
+            outline: 2px solid #7fb3d5;
+        }
+
         /* Container Styles */
         .container {
             max-width: 900px;
@@ -157,229 +181,78 @@
             button {
                 width: 100%;
             }
+
+            .translate-button {
+                margin: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <h1>Simplex Method Solver</h1>
-        <p>Solve linear programming problems interactively</p>
-        <a href="https://en.wikipedia.org/wiki/Simplex_algorithm" rel="noopener noreferrer" title="Learn about Simplex Method" aria-label="Learn about Simplex Method">Learn More</a>
+        <h1 data-translate="title">Simplex Method Solver</h1>
+        <p data-translate="subtitle">Solve linear programming problems interactively</p>
+        <a href="https://en.wikipedia.org/wiki/Simplex_algorithm" rel="noopener noreferrer" title="Learn about Simplex Method" aria-label="Learn about Simplex Method" data-translate="learn_more">Learn More</a>
+        <div class="translate-buttons">
+            <button class="translate-button" onclick="translatePage('en')">English</button>
+            <button class="translate-button" onclick="translatePage('zh')">Chinese</button>
+            <button class="translate-button" onclick="translatePage('ja')">Japanese</button>
+        </div>
     </header>
     <div class="container">
         <section class="form-section">
-            <h2>Input Problem</h2>
+            <h2 data-translate="input_problem">Input Problem</h2>
             <form id="simplex-form">
                 <div class="form-group">
-                    <label for="problem-type">Problem Type:</label>
+                    <label for="problem-type" data-translate="problem_type">Problem Type:</label>
                     <select id="problem-type" name="problem-type" required aria-label="Select problem type">
-                        <option value="max">Maximization</option>
-                        <option value="min">Minimization</option>
+                        <option value="max" data-translate="maximization">Maximization</option>
+                        <option value="min" data-translate="minimization">Minimization</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="num-variables">Number of Variables (n):</label>
+                    <label for="num-variables" data-translate="num_variables">Number of Variables (n):</label>
                     <input type="number" id="num-variables" name="num-variables" min="1" required aria-label="Number of variables">
                 </div>
                 <div class="form-group">
-                    <label for="num-constraints">Number of Constraints (m):</label>
+                    <label for="num-constraints" data-translate="num_constraints">Number of Constraints (m):</label>
                     <input type="number" id="num-constraints" name="num-constraints" min="1" required aria-label="Number of constraints">
                 </div>
                 <div class="form-group" id="objective-coefficients-group" style="display: none;">
-                    <label for="objective-coefficients">Objective Function Coefficients (comma-separated):</label>
+                    <label for="objective-coefficients" data-translate="objective_coefficients">Objective Function Coefficients (comma-separated):</label>
                     <input type="text" id="objective-coefficients" name="objective-coefficients" aria-label="Objective function coefficients">
                 </div>
                 <div id="constraint-matrix-group"></div>
                 <div class="form-group" id="rhs-group" style="display: none;">
-                    <label for="rhs-values">RHS Values (b, comma-separated):</label>
+                    <label for="rhs-values" data-translate="rhs_values">RHS Values (b, comma-separated):</label>
                     <input type="text" id="rhs-values" name="rhs-values" aria-label="Right-hand side values">
                 </div>
-                <button type="submit">Solve</button>
+                <button type="submit" data-translate="solve">Solve</button>
             </form>
         </section>
         <section class="form-section">
-            <h2>Results</h2>
-            <div id="output">Enter problem details and click "Solve" to see results.</div>
+            <h2 data-translate="results">Results</h2>
+            <div id="output" data-translate="output_default">Enter problem details and click "Solve" to see results.</div>
         </section>
     </div>
     <script>
-        // Dynamically generate input fields based on number of variables and constraints
-        const form = document.getElementById('simplex-form');
-        const numVariablesInput = document.getElementById('num-variables');
-        const numConstraintsInput = document.getElementById('num-constraints');
-        const objectiveGroup = document.getElementById('objective-coefficients-group');
-        const constraintGroup = document.getElementById('constraint-matrix-group');
-        const rhsGroup = document.getElementById('rhs-group');
-
-        function updateForm() {
-            const n = parseInt(numVariablesInput.value) || 0;
-            const m = parseInt(numConstraintsInput.value) || 0;
-
-            // Show/hide objective coefficients input
-            if (n > 0) {
-                objectiveGroup.style.display = 'block';
-                document.getElementById('objective-coefficients').placeholder = `Enter ${n} numbers, e.g., 1,2,3`;
-            } else {
-                objectiveGroup.style.display = 'none';
-            }
-
-            // Generate constraint matrix inputs
-            constraintGroup.innerHTML = '';
-            for (let i = 0; i < m; i++) {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label for="constraint-${i}">Constraint ${i + 1} Coefficients (comma-separated):</label>
-                    <input type="text" id="constraint-${i}" name="constraint-${i}" placeholder="Enter ${n} numbers, e.g., 1,2,3" aria-label="Constraint ${i + 1} coefficients">
-                `;
-                constraintGroup.appendChild(div);
-            }
-
-            // Show/hide RHS input
-            if (m > 0) {
-                rhsGroup.style.display = 'block';
-                document.getElementById('rhs-values').placeholder = `Enter ${m} numbers, e.g., 10,20`;
-            } else {
-                rhsGroup.style.display = 'none';
-            }
-        }
-
-        numVariablesInput.addEventListener('input', updateForm);
-        numConstraintsInput.addEventListener('input', updateForm);
-
-        // Handle form submission
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const outputDiv = document.getElementById('output');
-            outputDiv.textContent = 'Computing...';
-
-            try {
-                // Collect form data
-                const problemType = document.getElementById('problem-type').value;
-                const n = parseInt(numVariablesInput.value);
-                const m = parseInt(numConstraintsInput.value);
-                const c = document.getElementById('objective-coefficients').value.split(',').map(Number);
-                const A = [];
-                for (let i = 0; i < m; i++) {
-                    const row = document.getElementById(`constraint-${i}`).value.split(',').map(Number);
-                    A.push(row);
-                }
-                const b = document.getElementById('rhs-values').value.split(',').map(Number);
-
-                // Validate inputs
-                if (c.length !== n || A.length !== m || b.length !== m || A.some(row => row.length !== n)) {
-                    outputDiv.textContent = 'Invalid input: Check that the number of coefficients matches the specified dimensions.';
-                    return;
-                }
-
-                // Pass data to PyScript
-                await pyscript.run(`
-                    import numpy as np
-                    import json
-
-                    def Simplex_Method(c, A, b, output):
-                        # Modified Simplex Method to append output to a list
-                        output.append("\\n===============================")
-                        m, n = A.shape
-                        if len(b) != m or len(c) != n:
-                            output.append("The input is inconsistent.")
-                            return None
-
-                        x_origin = np.array(np.zeros(n))
-                        Ax = A @ x_origin
-                        if np.any(Ax > b):
-                            output.append(f"The initial solution at {x_origin} is infeasible!")
-                            return None
-
-                        c_s = np.hstack([c, np.zeros(m)])
-                        A_s = np.hstack([A, np.identity(m)])
-                        basicVars = list(range(n, n + m))
-                        nonBasicVars = list(range(n))
-                        x = np.zeros(n + m)
-                        x[basicVars] = b
-                        iteration = 100
-
-                        for i in range(iteration):
-                            basicVars = sorted(basicVars)
-                            nonBasicVars = sorted(nonBasicVars)
-                            B = A_s[:, basicVars]
-                            N = A_s[:, nonBasicVars]
-                            cB = c_s[basicVars]
-                            cN = c_s[nonBasicVars]
-                            xB = x[basicVars]
-                            b = xB
-
-                            y = np.linalg.solve(np.transpose(B), cB)
-                            cNbar = cN - np.transpose(y) @ N
-
-                            if np.all(cNbar <= 0):
-                                break
-
-                            if np.any(cNbar > 0):
-                                x = x
-
-                            entering_index = np.argmax(cNbar)
-                            entering = nonBasicVars[entering_index]
-                            dB = np.linalg.solve(B, -A_s[:, entering])
-
-                            if np.all(dB >= 0):
-                                output.append("Detect that the problem is unbounded!")
-                                return None
-
-                            output.append(f"Iteration_{i}:")
-                            output.append(f"Start at {x}")
-
-                            steps = np.where(dB < 0, -b/dB, np.inf)
-                            step_max = np.min(steps)
-                            leaving_index = np.argmin(steps)
-                            leaving = basicVars[leaving_index]
-
-                            b = b + step_max * dB
-                            x[sorted(basicVars)] = b
-                            b[leaving_index] = step_max
-
-                            basicVars[leaving_index] = entering
-                            nonBasicVars[entering_index] = leaving
-                            x[basicVars] = b
-                            optimal_value = c_s @ x
-
-                            output.append(f"Current point: {x}")
-                            output.append(f"Objective value: {optimal_value}")
-                            output.append("\\n-------------------------------")
-
-                        return {"Optimal value": optimal_value, "Solution vector": x.tolist()}
-
-                    # Get inputs from JavaScript
-                    problem_type = "${problemType}"
-                    c = np.array(${JSON.stringify(c)})
-                    A = np.array(${JSON.stringify(A)})
-                    b = np.array(${JSON.stringify(b)})
-
-                    # Handle minimization
-                    if problem_type == 'min':
-                        c = -c
-
-                    # Run Simplex Method
-                    output = []
-                    result = Simplex_Method(c, A, b, output)
-                    if result:
-                        output.append(f"Final Result: {json.dumps(result)}")
-                    return output
-                `).then(result => {
-                    outputDiv.textContent = result.join('\n');
-                });
-            } catch (error) {
-                outputDiv.textContent = `Error: ${error.message}\nPlease check your inputs and try again.`;
-            }
-        });
-
-        // Fallback for PyScript loading failure
-        window.addEventListener('error', (e) => {
-            const outputDiv = document.getElementById('output');
-            if (e.message.includes('pyscript')) {
-                outputDiv.textContent = 'Failed to load PyScript. Please check your internet connection or try a different browser.';
-            }
-        });
-    </script>
-</body>
-</html>
+        // Translation dictionary
+        const translations = {
+            en: {
+                title: "Simplex Method Solver",
+                subtitle: "Solve linear programming problems interactively",
+                learn_more: "Learn More",
+                input_problem: "Input Problem",
+                problem_type: "Problem Type:",
+                maximization: "Maximization",
+                minimization: "Minimization",
+                num_variables: "Number of Variables (n):",
+                num_constraints: "Number of Constraints (m):",
+                objective_coefficients: "Objective Function Coefficients (comma-separated):",
+                rhs_values: "RHS Values (b, comma-separated):",
+                solve: "Solve",
+                results: "Results",
+                output_default: 'Enter problem details and click "Solve" to see results.',
+                objective_placeholder: n => `Enter ${n} numbers, e.g., 1,2,3`,
+                constraint_placeholder: (n, i) => `Enter ${n} numbers, e.g., 1,2,3`,
+                rhs_placeholder: m =>
