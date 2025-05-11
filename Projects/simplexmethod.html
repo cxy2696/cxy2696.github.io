@@ -4,25 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simplex Method Solver</title>
-    <!-- Load PyScript from CDN -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.2/core.css">
-    <script defer src="https://pyscript.net/releases/2024.8.2/core.js"></script>
+    <link rel="stylesheet" href="/pyscript/core.css">
+    <script defer src="/pyscript/core.js"></script>
     <style>
-        /* Reset default styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Arial', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #064273;
         }
-
-        /* Header Styles */
         .header {
             background-color: #064273;
             color: #fff;
@@ -30,16 +25,13 @@
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
         .header h1 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
-
         .header p {
             font-size: 1rem;
         }
-
         .header a {
             color: #EDE1CF;
             text-decoration: none;
@@ -47,22 +39,17 @@
             padding: 0.2em 0.4em;
             border-radius: 4px;
         }
-
         .header a:hover,
         .header a:focus {
             color: #7fb3d5;
             background-color: rgba(255, 255, 255, 0.1);
             outline: 2px solid #7fb3d5;
         }
-
-        /* Container Styles */
         .container {
             max-width: 900px;
             margin: 1rem auto;
             padding: 0 1rem;
         }
-
-        /* Form Styles */
         .form-section {
             background-color: #fff;
             padding: 1.5rem;
@@ -70,7 +57,6 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
-
         .form-section h2 {
             font-size: 1.5rem;
             color: #2c3e50;
@@ -79,17 +65,14 @@
             display: inline-block;
             padding-bottom: 0.3rem;
         }
-
         .form-group {
             margin-bottom: 1rem;
         }
-
         .form-group label {
             display: block;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
-
         .form-group select,
         .form-group input[type="number"],
         .form-group input[type="text"] {
@@ -99,11 +82,9 @@
             border-radius: 4px;
             font-size: 1rem;
         }
-
         .form-group input[type="text"] {
-            font-family: monospace; /* For comma-separated inputs */
+            font-family: monospace;
         }
-
         button {
             background-color: #3498db;
             color: #fff;
@@ -114,16 +95,12 @@
             font-size: 1rem;
             transition: background-color 0.3s ease;
         }
-
         button:hover {
             background-color: #2980b9;
         }
-
         button:focus {
             outline: 2px solid #7fb3d5;
         }
-
-        /* Output Styles */
         #output {
             background-color: #fff;
             padding: 1.5rem;
@@ -133,27 +110,55 @@
             font-family: monospace;
             min-height: 100px;
         }
-
-        /* Responsive Design */
+        .weixin-tip {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+            color: #fff;
+            text-align: center;
+        }
+        .weixin-tip p {
+            margin-top: 10%;
+            padding: 0 5%;
+        }
+        #qrcode {
+            margin: 1rem auto;
+            text-align: center;
+        }
+        .language-switcher {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .language-switcher select {
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.5rem;
             }
-
             .form-section {
                 padding: 1rem;
             }
-
             .form-section h2 {
                 font-size: 1.2rem;
             }
+            .language-switcher {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
         }
-
         @media (max-width: 480px) {
             .header p {
                 font-size: 0.9rem;
             }
-
             button {
                 width: 100%;
             }
@@ -161,49 +166,172 @@
     </style>
 </head>
 <body>
+    <div class="language-switcher">
+        <select id="language" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+        </select>
+    </div>
     <header class="header">
-        <h1>Simplex Method Solver</h1>
-        <p>Solve linear programming problems interactively</p>
-        <a href="https://en.wikipedia.org/wiki/Simplex_algorithm" rel="noopener noreferrer" title="Learn about Simplex Method" aria-label="Learn about Simplex Method">Learn More</a>
+        <h1 data-i18n="title">Simplex Method Solver</h1>
+        <p data-i18n="subtitle">Solve linear programming problems interactively</p>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Simplex_algorithm" rel="noopener noreferrer" title="Learn about Simplex Method" aria-label="Learn about Simplex Method" data-i18n="learnMore">Learn More</a>
+        </p>
     </header>
     <div class="container">
         <section class="form-section">
-            <h2>Input Problem</h2>
+            <h2 data-i18n="inputProblem">Input Problem</h2>
             <form id="simplex-form">
                 <div class="form-group">
-                    <label for="problem-type">Problem Type:</label>
+                    <label for="problem-type" data-i18n="problemType">Problem Type:</label>
                     <select id="problem-type" name="problem-type" required aria-label="Select problem type">
-                        <option value="max">Maximization</option>
-                        <option value="min">Minimization</option>
+                        <option value="max" data-i18n="maximization">Maximization</option>
+                        <option value="min" data-i18n="minimization">Minimization</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="num-variables">Number of Variables (n):</label>
+                    <label for="num-variables" data-i18n="numVariables">Number of Variables (n):</label>
                     <input type="number" id="num-variables" name="num-variables" min="1" required aria-label="Number of variables">
                 </div>
                 <div class="form-group">
-                    <label for="num-constraints">Number of Constraints (m):</label>
+                    <label for="num-constraints" data-i18n="numConstraints">Number of Constraints (m):</label>
                     <input type="number" id="num-constraints" name="num-constraints" min="1" required aria-label="Number of constraints">
                 </div>
                 <div class="form-group" id="objective-coefficients-group" style="display: none;">
-                    <label for="objective-coefficients">Objective Function Coefficients (comma-separated):</label>
+                    <label for="objective-coefficients" data-i18n="objectiveCoefficients">Objective Function Coefficients (comma-separated):</label>
                     <input type="text" id="objective-coefficients" name="objective-coefficients" aria-label="Objective function coefficients">
                 </div>
                 <div id="constraint-matrix-group"></div>
                 <div class="form-group" id="rhs-group" style="display: none;">
-                    <label for="rhs-values">RHS Values (b, comma-separated):</label>
+                    <label for="rhs-values" data-i18n="rhsValues">RHS Values (b, comma-separated):</label>
                     <input type="text" id="rhs-values" name="rhs-values" aria-label="Right-hand side values">
                 </div>
-                <button type="submit">Solve</button>
+                <button type="submit" data-i18n="solve">Solve</button>
             </form>
         </section>
         <section class="form-section">
-            <h2>Results</h2>
-            <div id="output">Enter problem details and click "Solve" to see results.</div>
+            <h2 data-i18n="results">Results</h2>
+            <div id="output" data-i18n="outputPlaceholder">Enter problem details and click "Solve" to see results.</div>
         </section>
+        <section class="form-section">
+            <h2 data-i18n="accessWeChat">Access in WeChat</h2>
+            <p data-i18n="weChatInstructions">If the link doesn't open in WeChat, scan this QR code, copy the URL, or open it in Chrome/Safari.</p>
+            <div id="qrcode"></div>
+            <p>
+                <input type="text" id="copy-url" value="https://cxy-simplex.com" readonly style="width: 70%; padding: 0.5rem; margin-right: 0.5rem;">
+                <button onclick="copyUrl()" data-i18n="copyUrl">Copy URL</button>
+            </p>
+            <p><a href="https://cxy-simplex.com" id="fallback-link" rel="noopener noreferrer" aria-label="Open in external browser" data-i18n="openInBrowser">Open in Browser</a></p>
+        </section>
+        <div class="weixin-tip" id="weixin-tip" style="display: none;">
+            <p><img src="/images/open-in-browser.png" alt="Open in browser icon" style="max-width: 200px;"></p>
+            <p data-i18n="weChatPrompt">Please open this link in an external browser (Chrome/Safari) to access the Simplex Solver.</p>
+        </div>
     </div>
+    <script src="/js/qrcode.min.js"></script>
     <script>
-        // Dynamically generate input fields based on number of variables and constraints
+        const translations = {
+            en: {
+                title: "Simplex Method Solver",
+                subtitle: "Solve linear programming problems interactively",
+                learnMore: "Learn More",
+                inputProblem: "Input Problem",
+                problemType: "Problem Type",
+                maximization: "Maximization",
+                minimization: "Minimization",
+                numVariables: "Number of Variables (n):",
+                numConstraints: "Number of Constraints (m):",
+                objectiveCoefficients: "Objective Function Coefficients (comma-separated):",
+                rhsValues: "RHS Values (b, comma-separated):",
+                solve: "Solve",
+                results: "Results",
+                outputPlaceholder: "Enter problem details and click 'Solve' to see results.",
+                accessWeChat: "Access in WeChat",
+                weChatInstructions: "If the link doesn't open in WeChat, scan this QR code, copy the URL, or open it in Chrome/Safari.",
+                copyUrl: "Copy URL",
+                openInBrowser: "Open in Browser",
+                weChatPrompt: "Please open this link in an external browser (Chrome/Safari) to access the Simplex Solver."
+            },
+            zh: {
+                title: "单纯形法求解器",
+                subtitle: "交互式解决线性规划问题",
+                learnMore: "了解更多",
+                inputProblem: "输入问题",
+                problemType: "问题类型：",
+                maximization: "最大化",
+                minimization: "最小化",
+                numVariables: "变量数量 (n)：",
+                numConstraints: "约束数量 (m)：",
+                objectiveCoefficients: "目标函数系数（逗号分隔）：",
+                rhsValues: "右端值 (b，逗号分隔)：",
+                solve: "求解",
+                results: "结果",
+                outputPlaceholder: "请输入问题详情并点击“求解”查看结果。",
+                accessWeChat: "在微信中访问",
+                weChatInstructions: "如果链接在微信中无法打开，请扫描此二维码、复制网址或在Chrome/Safari中打开。",
+                copyUrl: "复制网址",
+                openInBrowser: "在浏览器中打开",
+                weChatPrompt: "请在外部浏览器（Chrome/Safari）中打开此链接以访问单纯形法求解器。"
+            },
+            ja: {
+                title: "シンプレックス法ソルバー",
+                subtitle: "線形計画問題を対話的に解決",
+                learnMore: "詳細を見る",
+                inputProblem: "問題の入力",
+                problemType: "問題の種類：",
+                maximization: "最大化",
+                minimization: "最小化",
+                numVariables: "変数の数 (n)：",
+                numConstraints: "制約の数 (m)：",
+                objectiveCoefficients: "目的関数の係数（カンマ区切り）：",
+                rhsValues: "右辺値 (b、カンマ区切り)：",
+                solve: "解決",
+                results: "結果",
+                outputPlaceholder: "問題の詳細を入力し、「解決」をクリックして結果を確認してください。",
+                accessWeChat: "WeChatでのアクセス",
+                weChatInstructions: "リンクがWeChatで開かない場合は、このQRコードをスキャンするか、URLをコピーしてChrome/Safariで開いてください。",
+                copyUrl: "URLをコピー",
+                openInBrowser: "ブラウザで開く",
+                weChatPrompt: "シンプレックス法ソルバーにアクセスするには、外部ブラウザ（Chrome/Safari）でこのリンクを開いてください。"
+            }
+        };
+
+        function switchLanguage() {
+            const lang = document.getElementById('language').value;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = translations[lang][key];
+                if (element.tagName === 'SELECT' || element.tagName === 'INPUT') {
+                    element.querySelectorAll('option').forEach((option, index) => {
+                        const optKey = ['maximization', 'minimization'][index];
+                        if (optKey) option.textContent = translations[lang][optKey];
+                    });
+                }
+            });
+            updateForm(); // Update placeholders
+        }
+
+        new QRCode(document.getElementById('qrcode'), {
+            text: 'https://cxy-simplex.com',
+            width: 128,
+            height: 128
+        });
+
+        function copyUrl() {
+            const urlInput = document.getElementById('copy-url');
+            urlInput.select();
+            document.execCommand('copy');
+            const lang = document.getElementById('language').value;
+            alert(translations[lang].copyUrl + '!');
+        }
+
+        const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+        if (isWeChat) {
+            document.getElementById('weixin-tip').style.display = 'block';
+        }
+
         const form = document.getElementById('simplex-form');
         const numVariablesInput = document.getElementById('num-variables');
         const numConstraintsInput = document.getElementById('num-constraints');
@@ -214,31 +342,29 @@
         function updateForm() {
             const n = parseInt(numVariablesInput.value) || 0;
             const m = parseInt(numConstraintsInput.value) || 0;
+            const lang = document.getElementById('language').value;
 
-            // Show/hide objective coefficients input
             if (n > 0) {
                 objectiveGroup.style.display = 'block';
-                document.getElementById('objective-coefficients').placeholder = `Enter ${n} numbers, e.g., 1,2,3`;
+                document.getElementById('objective-coefficients').placeholder = translations[lang].objectiveCoefficients.replace('：', '') + `, e.g., 1,2,3`;
             } else {
                 objectiveGroup.style.display = 'none';
             }
 
-            // Generate constraint matrix inputs
             constraintGroup.innerHTML = '';
             for (let i = 0; i < m; i++) {
                 const div = document.createElement('div');
                 div.className = 'form-group';
                 div.innerHTML = `
-                    <label for="constraint-${i}">Constraint ${i + 1} Coefficients (comma-separated):</label>
-                    <input type="text" id="constraint-${i}" name="constraint-${i}" placeholder="Enter ${n} numbers, e.g., 1,2,3" aria-label="Constraint ${i + 1} coefficients">
+                    <label for="constraint-${i}">${translations[lang].constraint} ${i + 1} ${translations[lang].coefficients} (comma-separated):</label>
+                    <input type="text" id="constraint-${i}" name="constraint-${i}" placeholder="${translations[lang].constraintCoefficients.replace('：', '')}, e.g., 1,2,3" aria-label="Constraint ${i + 1} coefficients">
                 `;
                 constraintGroup.appendChild(div);
             }
 
-            // Show/hide RHS input
             if (m > 0) {
                 rhsGroup.style.display = 'block';
-                document.getElementById('rhs-values').placeholder = `Enter ${m} numbers, e.g., 10,20`;
+                document.getElementById('rhs-values').placeholder = translations[lang].rhsValues.replace('：', '') + `, e.g., 10,20`;
             } else {
                 rhsGroup.style.display = 'none';
             }
@@ -247,14 +373,13 @@
         numVariablesInput.addEventListener('input', updateForm);
         numConstraintsInput.addEventListener('input', updateForm);
 
-        // Handle form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const outputDiv = document.getElementById('output');
-            outputDiv.textContent = 'Computing...';
+            const lang = document.getElementById('language').value;
+            outputDiv.textContent = translations[lang].computing || 'Computing...';
 
             try {
-                // Collect form data
                 const problemType = document.getElementById('problem-type').value;
                 const n = parseInt(numVariablesInput.value);
                 const m = parseInt(numConstraintsInput.value);
@@ -266,19 +391,16 @@
                 }
                 const b = document.getElementById('rhs-values').value.split(',').map(Number);
 
-                // Validate inputs
                 if (c.length !== n || A.length !== m || b.length !== m || A.some(row => row.length !== n)) {
-                    outputDiv.textContent = 'Invalid input: Check that the number of coefficients matches the specified dimensions.';
+                    outputDiv.textContent = translations[lang].invalidInput || 'Invalid input: Check that the number of coefficients matches the specified dimensions.';
                     return;
                 }
 
-                // Pass data to PyScript
                 await pyscript.run(`
                     import numpy as np
                     import json
 
                     def Simplex_Method(c, A, b, output):
-                        # Modified Simplex Method to append output to a list
                         output.append("\\n===============================")
                         m, n = A.shape
                         if len(b) != m or len(c) != n:
@@ -349,17 +471,14 @@
 
                         return {"Optimal value": optimal_value, "Solution vector": x.tolist()}
 
-                    # Get inputs from JavaScript
                     problem_type = "${problemType}"
                     c = np.array(${JSON.stringify(c)})
                     A = np.array(${JSON.stringify(A)})
                     b = np.array(${JSON.stringify(b)})
 
-                    # Handle minimization
                     if problem_type == 'min':
                         c = -c
 
-                    # Run Simplex Method
                     output = []
                     result = Simplex_Method(c, A, b, output)
                     if result:
@@ -369,17 +488,20 @@
                     outputDiv.textContent = result.join('\n');
                 });
             } catch (error) {
-                outputDiv.textContent = `Error: ${error.message}\nPlease check your inputs and try again.`;
+                outputDiv.textContent = `${translations[lang].error || 'Error'}: ${error.message}\n${translations[lang].checkInputs || 'Please check your inputs or open in Chrome/Safari: https://cxy-simplex.com'}`;
             }
         });
 
-        // Fallback for PyScript loading failure
         window.addEventListener('error', (e) => {
             const outputDiv = document.getElementById('output');
+            const lang = document.getElementById('language').value;
             if (e.message.includes('pyscript')) {
-                outputDiv.textContent = 'Failed to load PyScript. Please check your internet connection or try a different browser.';
+                outputDiv.textContent = translations[lang].pyscriptError || 'Failed to load PyScript. Please open this link in Chrome/Safari: https://cxy-simplex.com';
             }
         });
+
+        // Initialize language
+        switchLanguage();
     </script>
 </body>
 </html>
