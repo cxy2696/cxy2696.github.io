@@ -16,6 +16,7 @@ body {
 .header {
     background-color: #064273;
     color: #fff;
+    margin: 1.5em;
     padding: 3em 3em;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -23,11 +24,11 @@ body {
 
 /* Profile Image Styles */
 .profile-img {
-    margin: 0 5rem;
+    margin: 0 15rem;
     width: 200px;
     height: auto;
     border-radius: 50%;
-    float: center;
+    float: inline start;
     display: block;
     object-fit: cover;
 }
