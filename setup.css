@@ -23,7 +23,8 @@ body {
 
 /* Profile Image Styles */
 .profile-img {
-    width: 10%;
+    margin: 0 5rem;
+    width: 200px;
     height: auto;
     border-radius: 50%;
     float: inline-end;
