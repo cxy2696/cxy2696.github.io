@@ -26,7 +26,8 @@ body {
     width: 200px;
     height: auto;
     border-radius: 50%;
-    float: inline-end;
+    margin: 5rem;
+    float: inline-start;
     display: block;
     object-fit: cover;
 }
