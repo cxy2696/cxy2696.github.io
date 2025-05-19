@@ -28,7 +28,7 @@ body {
     width: 200px;
     height: auto;
     border-radius: 50%;
-    float: inline-start;
+    float: center;
     display: block;
     object-fit: cover;
 }
