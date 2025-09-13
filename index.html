@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title> cxy </title>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
@@ -14,7 +15,30 @@
     <link rel="preload" href="IMG_2887.jpeg" as="image">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/haskell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        .mermaid { margin: 1rem 0; }
+        .toggle-btn { cursor: pointer; color: #3b82f6; }
+        .toggle-content { display: none; }
+        .toggle-content.active { display: block; }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #1f2937; color: #e5e7eb; }
+            pre { background: #374151; }
+        }
+    </style>
 </head>
+<body class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+    <nav class="bg-blue-600 p-4 text-white" role="navigation" aria-label="Main navigation">
+        <ul class="flex space-x-4">
+            <li><a href="/" data-page="home" class="hover:underline" aria-label="Home">Home</a></li>
+            <li><a href="/Projects" data-page="projects" class="hover:underline" aria-label="projects">Projects</a></li>
+        </ul>
+    </nav>
     
 <body>
     <div class="header">
@@ -24,8 +48,6 @@
         <p><a href="https://www.linkedin.com/in/Xinyi-cui-3979511b5/">LinkedIn</a> | <a href="https://github.com/cxy2696">GitHub</a></p>
         <p>Email: <a href="mailto:xinyicui0108@outlook.com">Personal Email</a></p>
         <br/>
-        <nav><h2> <a href="/" data-page="home">Home</a> | 
-            <a href="/Projects" data-page="projects">Projects</a> | </h2></nav>
     </div>
 
 
