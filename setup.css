@@ -46,16 +46,17 @@ main {
     @apply max-w-3xl mx-auto pt-24 px-4 sm:px-6;
 }
 
-/* Profile image */
+/* Profile Image Styles */
 .profile-img {
-    @apply w-32 h-32 rounded-full border border-gray-200 mb-6;
+    margin: 0 15rem;
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    float: center;
+    display: block;
     object-fit: cover;
 }
 
-/* Mermaid diagrams */
-.mermaid {
-    @apply my-6 p-4 bg-gray-50 rounded border border-gray-200;
-}
 
 /* Code blocks (Highlight.js) */
 pre {
@@ -100,8 +101,12 @@ a {
         @apply flex-col space-y-2 items-center;
     }
     .profile-img {
-        @apply w-24 h-24;
+        width: 120px;
+        float: none;
+        margin: 0 auto 1rem;
+        display: block;
     }
+    
     h1 {
         @apply text-2xl;
     }
