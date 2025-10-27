@@ -46,9 +46,6 @@
         <p>Email: <a href="mailto:xinyicui0108@outlook.com" class="text-blue-600 hover:underline">Personal Email</a></p>
         </header>
 
-
-
-
     <div id="content"></div>
     <script>
         const contentDiv = document.getElementById('content');
@@ -71,7 +68,8 @@
                     // Update document title based on page
                     document.title = {
                         '/': 'cxy',
-                        '/Projects': 'cxy | Projects'
+                        '/Projects': 'cxy | Projects',
+                        '/CV': 'cxy | CV'
                     }[pageUrl] || 'cxy';
                 })
                 .catch(error => {
