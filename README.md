@@ -1,2 +1,2 @@
 # Portfolio
-[https://cxy2696.github.io/](website)
+[website](https://cxy2696.github.io/)
